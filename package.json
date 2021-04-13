@@ -31,6 +31,7 @@
       "react-app/jest"
     ]
   },
+  "hompage": "https://determined-nobel-abedf9.netlify.app",
   "browserslist": {
     "production": [
       ">0.2%",
