@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
     margin: 20px 0;
-    padding: 10px 0;
+    padding: 10px 20px 10px 0;
     height: 18vh;
     display: flex;
     align-items: center;
@@ -17,6 +17,8 @@ const LinkTag = styled(Link)`
 
     border: 1px solid #999;
     padding: 11px 16px;
+    text-align: center;
+    min-width: 120px;
     background-color: #231f20;
 
     &:hover{

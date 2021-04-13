@@ -10,7 +10,6 @@ import Message from "Components/Message";
 
 const Container = styled.div`
     position: relative;
-    height: calc(100vh - 50px);
     width: 100%;
 `;
 
@@ -19,7 +18,7 @@ const Backdrop = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 50px);
     background-image: url(${props => props.bgImage});
     background-position: center;
     background-size: cover;
@@ -39,7 +38,7 @@ const Content = styled.div`
 const Cover = styled.div`
     border-radius: 5px;
     width: 30%;
-    height: 100%;
+    height: 100vh;
     max-height: calc(30vw + 100px);
     background-image: url(${props => props.bgImage});
     background-size: cover;
@@ -49,6 +48,7 @@ const Cover = styled.div`
 const Data = styled.div`
     width: 70%;
     margin-left: 10px;
+    margin-bottom: 100px;
 `;
 
 const Title = styled.h2`
