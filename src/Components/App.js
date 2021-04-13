@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Router from "Components/Router";
 import GlobalStyles from "Components/GlobalStyles";
 // Components/Header directory 를 먼저 들려서 index.js가 있으면 그것을 확인해본다.
