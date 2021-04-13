@@ -11,7 +11,7 @@ const TabContainer = styled.div`
 const TabList = styled.ul`
     display: flex;
 `;
-const Tab = styled.li`
+const TabListItem = styled.li`
     padding: 10px 20px;
     cursor: pointer;
     font-weight: ${props => props.selected ? 'bold' : '400'};
@@ -28,16 +28,15 @@ const TabComponent = () => {
 
     return {activeIndex, setActiveIndex};
 }
-
-export default (result) => {
+const Tab = (result) => {
     const {activeIndex, setActiveIndex} = TabComponent();
     
     return (
         <TabContainer>
             <TabList>
-                <Tab onClick={() => setActiveIndex(0)} selected={activeIndex === 0}>Video</Tab>
-                <Tab onClick={() => setActiveIndex(1)} selected={activeIndex === 1}>Production</Tab>
-                {!result.isMovie && <Tab onClick={() => setActiveIndex(2)} selected={activeIndex === 2}>Seasons</Tab>}
+                <TabListItem onClick={() => setActiveIndex(0)} selected={activeIndex === 0}>Video</TabListItem>
+                <TabListItem onClick={() => setActiveIndex(1)} selected={activeIndex === 1}>Production</TabListItem>
+                {!result.isMovie && <TabListItem onClick={() => setActiveIndex(2)} selected={activeIndex === 2}>Seasons</TabListItem>}
             </TabList>
             <TabContent>
                 {activeIndex == 0 && <VideosTab videos={result.videos && result.videos.results} />}
@@ -47,3 +46,21 @@ export default (result) => {
         </TabContainer>
     )
 }
+
+Tab.propTypes = {
+    result: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        overview: PropTypes.string,
+        parts: PropTypes.arrayOf(
+            PropTypes.shape({
+                original_title: PropTypes.string,
+                overview: PropTypes.string,
+                id: PropTypes.number.isRequired,
+                poster_path: PropTypes.string,
+                release_date: PropTypes.string,
+                vote_average: PropTypes.number,
+            })
+        ).isRequired,
+    })
+}
+export default Tab;
