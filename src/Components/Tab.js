@@ -39,9 +39,9 @@ const Tab = (result) => {
                 {!result.isMovie && <TabListItem onClick={() => setActiveIndex(2)} selected={activeIndex === 2}>Seasons</TabListItem>}
             </TabList>
             <TabContent>
-                {activeIndex == 0 && <VideosTab videos={result.videos && result.videos.results} />}
-                {activeIndex == 1 && <ProductionTab companies={result.production_companies} />}
-                {activeIndex == 2 && <SeasonsTab seasons={result.seasons} />}
+                {activeIndex === 0 && <VideosTab videos={result.videos && result.videos.results} />}
+                {activeIndex === 1 && <ProductionTab companies={result.production_companies} />}
+                {activeIndex === 2 && <SeasonsTab seasons={result.seasons} />}
             </TabContent>
         </TabContainer>
     )
