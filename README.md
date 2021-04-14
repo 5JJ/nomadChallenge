@@ -5,6 +5,9 @@ This project is for a Nomad Challenge.
 It takes 1 week to finish. 
 After submit the final version, I will continue to put more functions.
 
+## Skills used in this project
+- ReactJS, Hook, Styled-component, Axios, React-Router, PropTypes
+
 ## Screens
 - [ ] Home
 - [ ] TV Show
