@@ -1,13 +1,16 @@
 # react turtorial
 Learning React and ES6 by buildling a Movie Discovery
 
+This project is for a Nomad Challenge.
+It takes 1 week to finish. 
+After submit the final version, I will continue to put more functions.
 
-
-##Screens
+## Screens
 - [ ] Home
 - [ ] TV Show
 - [ ] Search
 - [ ] Detail
+- [ ] Collection
 
 
 ## API Verbs
@@ -19,3 +22,15 @@ Learning React and ES6 by buildling a Movie Discovery
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Search (TV, Movie)
+
+> Api Link
+https://developers.themoviedb.org/3/search/search-movies
+
+
+## Next Plan
+- [ ] User Reviews
+- [ ] Create Filter
+- [ ] Add Recommandation, Similar Section to Detail
+- [ ] Upcoming Movie/ TV Shows
+- [ ] Mark Favorites
+- [ ] Login Page
