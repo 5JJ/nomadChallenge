@@ -24,6 +24,7 @@ export const moviesApi = {
             append_to_response: 'videos',
         }
     }),
+    getReviews: (id) => api.get(`movie/${id}/reviews`)
 }
 
 export const tvApi = {
@@ -40,6 +41,7 @@ export const tvApi = {
             append_to_response: 'videos',
         }
     }),
+    getReviews: (id) => api.get(`tv/${id}/reviews`)
 }
 
 export const collectionApi = {
