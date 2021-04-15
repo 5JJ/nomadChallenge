@@ -7,6 +7,8 @@ import Tab from "Components/Tab";
 import Collection from "Components/Collection";
 import Helmet from "react-helmet";
 import Message from "Components/Message";
+import ReviewList from "Components/ReviewList";
+import device from "Components/deviceSize";
 
 const Container = styled.div`
     position: relative;
@@ -27,17 +29,8 @@ const Backdrop = styled.div`
     z-index: 0;
 `;
 
-const Content = styled.div`
-    padding: 20px;
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-`;
-
 const Cover = styled.div`
     border-radius: 5px;
-    width: 30%;
     height: 100vh;
     max-height: calc(30vw + 100px);
     background-image: url(${props => props.bgImage});
@@ -45,8 +38,8 @@ const Cover = styled.div`
     background-position: center;
 `;
 
+
 const Data = styled.div`
-    width: 70%;
     margin-left: 10px;
     margin-bottom: 100px;
 `;
@@ -68,11 +61,9 @@ const Overview = styled.p`
     line-height: 1.8;    
     font-size: 12px;
     color: 0.7;
-    width: 50%;
+    width: 80%;
 `;
 
-const VideoList = styled.ul``;
-const Video = styled.video``;
 const LinkTag = styled.a`
     margin-left: 20px;
     border-radius: 3px;
@@ -87,8 +78,40 @@ const LinkTag = styled.a`
 const Section = styled.section`
     background-color: rgba(0,0,0,0.6);
 `;
+const Content = styled.div`
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 30% 70%;
 
-const DetailPresenter = withRouter(({location : {pathname}, match : {path}, result, loading, error}) => (
+    > ${Cover}{
+        order: 1;
+    }
+    > section{
+        order: 3;
+    }
+
+    > ${Data}{
+        order: 2;
+        grid-row: 1/ span 2;
+        grid-column: 2;
+    }
+
+    @media ${({ device }) => device.tablet} {
+        grid-template-columns: 100%;
+
+        > ${Data}{
+            grid-row: auto;
+            grid-column: auto;
+            margin-bottom: 0;
+        }
+    }
+`;
+
+const DetailPresenter = withRouter(({location : {pathname}, match : {path}, result, loading, error, secondIsFetch, secondResult}) => (
     loading ?
     <>
         <Helmet><title>Loading | Namflix</title></Helmet>
@@ -103,8 +126,13 @@ const DetailPresenter = withRouter(({location : {pathname}, match : {path}, resu
             {result.isMovie = !!result.original_title}
             <Helmet><title>{result.isMovie ? result.original_title : result.original_name} | Namflix</title></Helmet>
             <Backdrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}/>
-            <Content>
-                <Cover bgImage={result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : require("../../assets/no_image.jpg").default}/>
+            <Content device={device}>
+                <Cover bgImage={result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : require("../../assets/no_image.jpg").default}/> 
+                <section>
+                {
+                    secondIsFetch && <ReviewList reviews={secondResult}/>
+                }
+                </section>
                 <Data>
                     <Title>{result.isMovie ? result.original_title : result.original_name}</Title>
                     <ItemContainer>
@@ -134,6 +162,18 @@ DetailPresenter.propTypes = {
     result: PropTypes.object,
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired,
+    secondIsFetch: PropTypes.bool.isRequired,
+    secondResult: PropTypes.arrayOf(
+        PropTypes.shape({
+            author: PropTypes.string,
+            author_details: PropTypes.shape({
+                avatar_path: PropTypes.string,
+                username: PropTypes.string,
+            }),
+            content: PropTypes.string.isRequired,
+            created_at: PropTypes.string.isRequired,
+        })
+    )
 }
 
 export default DetailPresenter;

@@ -10,6 +10,9 @@ const CompanyList = styled.ul``;
 const Company = styled.li`
     padding: 15px 10px;
     display: flex;
+    white-space: pre-wrap;
+    word-break: break-all;
+    
     &:not(&:last-child){
         border-bottom: 1px solid rgb(63 62 62 / 82%);
     }
