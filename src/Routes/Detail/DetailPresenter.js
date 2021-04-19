@@ -31,8 +31,8 @@ const Backdrop = styled.div`
 
 const Cover = styled.div`
     border-radius: 5px;
-    height: 100vh;
-    max-height: calc(30vw + 100px);
+    height: 50vh;
+    //max-height: calc(30vw + 100px);
     background-image: url(${props => props.bgImage});
     background-size: cover;
     background-position: center;
@@ -86,6 +86,7 @@ const Content = styled.div`
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 30% 70%;
+    grid-template-rows: 50vh auto;
 
     > ${Cover}{
         order: 1;
