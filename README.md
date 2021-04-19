@@ -31,7 +31,7 @@ https://developers.themoviedb.org/3/search/search-movies
 
 
 ## Next Plan
-- [ ] User Reviews
+- [x] User Reviews
 - [ ] Create Filter
 - [ ] Add Recommandation, Similar Section to Detail
 - [ ] Upcoming Movie/ TV Shows
