@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Header = styled.header`
   color: white;
-  position: fixed;
+  position: ${({ notFixed }) => (notFixed ? "absolute" : "fixed")};
   top: 0;
   left: 0;
   z-index: 10;
@@ -28,11 +28,13 @@ const Item = styled.li`
   transition: border-bottom 0.5s ease-in-out;
 `;
 
+const BlankItem = styled.li`
+  flex: 1;
+`;
+
 const List = styled.ul`
   display: flex;
-  // &:hover{
-  //     background-color: blue;
-  // }
+  width: 100%;
 `;
 const SLink = styled(Link)`
   height: 50px;
@@ -42,7 +44,7 @@ const SLink = styled(Link)`
 `;
 
 export default withRouter(({ location: { pathname } }) => (
-  <Header>
+  <Header notFixed={pathname === "/search"}>
     <List>
       <Item current={pathname === "/" || pathname.startsWith("/movie")}>
         <SLink to="/">Movies</SLink>
@@ -50,6 +52,7 @@ export default withRouter(({ location: { pathname } }) => (
       <Item current={pathname === "/tv" || pathname.startsWith("/show")}>
         <SLink to="/tv">Tv</SLink>
       </Item>
+      <BlankItem>&nbsp;</BlankItem>
       <Item current={pathname === "/search"}>
         <SLink to="/search">Search</SLink>
       </Item>
