@@ -14,10 +14,11 @@ const LoadingIcon = styled.span`
   text-align: center;
 `;
 
-export default () => (
+const Loader = () => (
   <Container>
     <LoadingIcon role="img" aria-label="loading">
       ⏰
     </LoadingIcon>
   </Container>
 );
+export default Loader;

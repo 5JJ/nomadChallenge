@@ -7,4 +7,6 @@ const Notice = styled.p`
   color: #999;
 `;
 
-export default () => <Notice>No Result</Notice>;
+const NoResult = () => <Notice>No Result</Notice>;
+
+export default NoResult;

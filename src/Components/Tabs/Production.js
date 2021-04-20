@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import NoResult from "../NoResult";
 import { companyApi } from "api";
 import Message from "Components/Message";
 
-const Container = styled.div``;
 const CompanyList = styled.ul``;
 const Company = styled.li`
   padding: 15px 10px;
@@ -94,7 +93,6 @@ const CompanyDetail = (companyIds) => {
       }
     }
   };
-
   useEffect(() => {
     getCompanyDetail();
     return () => {
