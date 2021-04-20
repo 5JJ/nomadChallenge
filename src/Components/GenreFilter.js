@@ -8,6 +8,7 @@ const GenreTag = styled.span`
   margin: 3px;
   border-radius: 5px;
   border: 1px solid #eee;
+  cursor: pointer;
   color: ${(props) => (props.selected ? "white" : "#eee")};
   background-color: ${(props) => (props.selected ? "#999" : "#231f20")};
 `;
@@ -16,7 +17,7 @@ const GenreFilter = ({ genres, setGenre, genreId }) => {
   return (
     <>
       {genres &&
-        genres.map((genre) => (
+        [{ id: 0, name: "All" }, ...genres].map((genre) => (
           <GenreTag
             key={genre.id}
             onClick={() => {

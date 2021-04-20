@@ -10,7 +10,7 @@ export default class SearchCointainer extends React.Component {
     error: null,
     loading: false,
     genres: null,
-    genreId: null,
+    genreId: 0,
   };
   allGenres = {};
   async componentDidMount() {
@@ -71,7 +71,7 @@ export default class SearchCointainer extends React.Component {
         movieResults,
         tvResults,
         genres,
-        genreId: null,
+        genreId: 0,
       });
     } catch (error) {
       this.setState({ error: "Can't search" });
