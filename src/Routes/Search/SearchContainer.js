@@ -73,11 +73,9 @@ export default class SearchCointainer extends React.Component {
         genres,
         genreId: null,
       });
-      console.log("renderdd");
     } catch (error) {
       this.setState({ error: "Can't search" });
     } finally {
-      console.log("render");
       this.setState({ loading: false });
     }
   };
