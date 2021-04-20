@@ -2,9 +2,6 @@ import HomeContainer from "./HomeContainer";
 
 export default HomeContainer;
 
-
-
-
 /*
     Pattern of coding React Components
      
