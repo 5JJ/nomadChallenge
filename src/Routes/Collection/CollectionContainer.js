@@ -2,7 +2,7 @@ import React from "react";
 import CollectionPresenter from "./CollectionPresenter";
 import { collectionApi } from "api";
 
-export default class extends React.Component {
+export default class CollectionContainer extends React.Component {
   state = {
     loading: true,
     error: null,

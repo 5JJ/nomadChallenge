@@ -24,8 +24,7 @@ import Collection from "Routes/Collection";
     Header.js에서 withRouter을 사용한 것과 다름.
 
 */
-
-export default () => (
+const RouterContainer = () => (
   <Router>
     <Header />
     <Switch>
@@ -40,3 +39,5 @@ export default () => (
     </Switch>
   </Router>
 );
+
+export default RouterContainer;

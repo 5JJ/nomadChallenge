@@ -25,7 +25,6 @@ const InfoConatiner = styled.div`
 const AirDate = styled.span`
   font-weight: 600;
 `;
-const Name = styled.span``;
 const Overview = styled.p`
   margin: 10px 0;
   padding: 0 10px 0 0;
