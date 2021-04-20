@@ -71,6 +71,7 @@ export default class SearchCointainer extends React.Component {
         movieResults,
         tvResults,
         genres,
+        genreId: null,
       });
       console.log("renderdd");
     } catch (error) {
