@@ -52,4 +52,9 @@ export const companyApi = {
     getDetail: (id) => api.get(`company/${id}`)
 }
 
+export const genreApi = {
+    getMovieList: () => api.get(`genre/movie/list`),
+    getTvList: () => api.get(`genre/tv/list`)
+}
+
 export default api;

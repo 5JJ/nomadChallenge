@@ -64,7 +64,6 @@ const DetailInfo = styled.dl`
 `;
 const DetailTitle = styled.dt`
     float: left;
-    line-height: 1.3;
     margin-right: 3px;
     font-weight: bold;
 `;

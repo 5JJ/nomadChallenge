@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Message from "Components/Message";
 
 const Container = styled.div`
     margin-bottom: 20px;
@@ -21,7 +22,12 @@ const Grid = styled.div`
 const Section = ({title, children}) => (
     <Container>
         <Title>{title}</Title>
+        {
+        children.length === 0 ? <Message text="No Results..."/> 
+        :
         <Grid>{children}</Grid>
+        }
+        
     </Container>
 );
 

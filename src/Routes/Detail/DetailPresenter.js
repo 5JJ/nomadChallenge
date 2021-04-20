@@ -58,7 +58,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-    line-height: 1.8;    
+    line-height: 1.8;   
     font-size: 12px;
     color: 0.7;
     width: 80%;
