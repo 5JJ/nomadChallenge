@@ -9,6 +9,7 @@ const CompanyList = styled.ul``;
 const Company = styled.li`
   padding: 15px 10px;
   display: flex;
+  align-items: start;
   white-space: pre-wrap;
   word-break: break-all;
 

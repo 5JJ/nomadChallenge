@@ -16,7 +16,8 @@ const TabListItem = styled.li`
   cursor: pointer;
   font-weight: ${(props) => (props.selected ? "bold" : "400")};
   color: ${(props) => (props.selected ? "white" : "#999")};
-  border-bottom: ${(props) => (props.selected ? "2px solid" : "none")};
+  border-bottom: ${(props) =>
+    props.selected ? "2px solid" : "1px solid #999"};
 `;
 const TabContent = styled.div`
   padding: 20px 10px;

@@ -11,6 +11,9 @@ const Container = styled.div`
 `;
 const List = styled.ul``;
 const Title = styled.h3`
+  margin-bottom: 10px;
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
   font-size: 18px;
