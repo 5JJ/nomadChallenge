@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -11,13 +11,25 @@ const GenreTag = styled.span`
   cursor: pointer;
   color: ${(props) => (props.selected ? "white" : "#eee")};
   background-color: ${(props) => (props.selected ? "#999" : "#231f20")};
+
+  ${(props) =>
+    props.selected &&
+    `
+    &:after {
+      margin-left: 7px;
+      content: "x";
+      color: white;
+      display: inline;
+    }
+  `}
 `;
 
 const GenreFilter = ({ genres, setGenre, genreId }) => {
+  console.log("filter");
   return (
     <>
       {genres &&
-        [{ id: 0, name: "All" }, ...genres].map((genre) => (
+        genres.map((genre) => (
           <GenreTag
             key={genre.id}
             onClick={() => {

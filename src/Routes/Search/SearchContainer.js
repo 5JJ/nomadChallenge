@@ -66,6 +66,7 @@ export default class SearchContainer extends React.Component {
           }, [])
         )
       ).map((id) => ({ id: id, name: this.allGenres[id.toString()] }));
+      console.log(genres);
 
       this.setState({
         movieResults,
@@ -87,8 +88,11 @@ export default class SearchContainer extends React.Component {
   }
 
   filterByGenre = (genreId) => {
-    this.setState({ genreId });
-    //this.setState({genreId, tvResults: this.state.tvResults.filter(show => show.genre_ids && show.genre_ids.find(genre_id => genre_id === genreId))})
+    if (genreId === this.state.genreId) {
+      this.setState({ genreId: 0 });
+    } else {
+      this.setState({ genreId });
+    }
   };
 
   // 검색 엔터키가 눌려지면, 위의 state에서 searchTerm에 입력한 검색어를 넣고 loading을 true로 바꿔줄 것이다.
