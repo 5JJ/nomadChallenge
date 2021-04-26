@@ -11,6 +11,8 @@ import TV from "Routes/TV";
 import Detail from "Routes/Detail";
 import Header from "./Header";
 import Collection from "Routes/Collection";
+import Mypage from "Routes/Mypage";
+import Login from "Routes/Login";
 
 // 해당 path에 들어왔을때 보여줄 component를 지정할 수 있다.
 // route 는 router 컴포넌트 안에서만 사용할 수 있다.
@@ -35,6 +37,8 @@ const RouterContainer = () => (
       <Route path="/movie/:id" exact component={Detail} />
       <Route path="/show/:id" exact component={Detail} />
       <Route path="/collections/:id" exact component={Collection} />
+      <Route path="/mypage" exact component={Mypage} />
+      <Route path="/login" exact component={Login} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>
