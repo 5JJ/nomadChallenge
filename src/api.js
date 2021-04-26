@@ -61,4 +61,18 @@ export const genreApi = {
   getTvList: () => api.get(`genre/tv/list`),
 };
 
+export const authApi = {
+  getRequestToken: () => api.get(`authentication/token/new`),
+  createSession: (request_token) =>
+    api.post(`authentication/session/new`, {
+      params: { request_token },
+    }),
+  createSessionWithLogin: (username, password, request_token) =>
+    api.post(`authentication/session/validate_with_login`, {
+      params: { username, password, request_token },
+    }),
+  deleteSession: (session_id) =>
+    api.delete(`authentication/session`, { params: { session_id } }),
+};
+
 export default api;
