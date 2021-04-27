@@ -15,16 +15,17 @@ const connect = async (inputValues) => {
   const { username, password } = inputValues;
   try {
     // get new Request token
-    let request_token = getToken();
+    let { value: request_token, expiredDate } = getToken();
     if (!request_token) {
       const {
-        data: { success, request_token: token, status_message },
+        data: { success, request_token: token, status_message, expires_at },
       } = await authApi.getRequestToken();
 
       if (!success) throw authErrors.RequestTokenError(status_message);
       request_token = token;
+      expiredDate = expires_at;
     }
-    result.request_token = request_token;
+    result.request_token = { value: request_token, expiredDate };
 
     // confirm token with username and password
     const {
@@ -59,7 +60,6 @@ const useForm = (initialValues, validation, onSubmit, handleResult) => {
     const {
       target: { name, value },
     } = e;
-    console.log(name, value);
     setInputValues({ ...inputValues, [name]: value });
   };
   const handleSubmit = async (e) => {
@@ -95,7 +95,6 @@ const LoginContainer = ({ location: { state } }) => {
     validation,
     connect,
     ({ success, session_id, request_token }) => {
-      console.log(success, session_id, request_token);
       if (success) {
         setSessionId(session_id);
         setToken(request_token);
