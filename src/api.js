@@ -9,6 +9,10 @@ const api = axios.create({
   },
 });
 
+// const dbPage = axios.create({
+//   baseURL: "https://www.themoviedb.org/",
+// });
+
 // using relative url
 export const moviesApi = {
   nowPlaying: () => api.get("movie/now_playing"),
@@ -63,13 +67,19 @@ export const genreApi = {
 
 export const authApi = {
   getRequestToken: () => api.get(`authentication/token/new`),
+  // confirmToken: (request_token) =>
+  //   dbPage.get(
+  //     `authenticate/${request_token}?redirect_to=https://determined-nobel-abedf9.netlify.app/login`
+  //   ),
   createSession: (request_token) =>
     api.post(`authentication/session/new`, {
-      params: { request_token },
+      request_token,
     }),
   createSessionWithLogin: (username, password, request_token) =>
-    api.post(`authentication/session/validate_with_login`, {
-      params: { username, password, request_token },
+    api.post(`authentication/token/validate_with_login`, {
+      username,
+      password,
+      request_token,
     }),
   deleteSession: (session_id) =>
     api.delete(`authentication/session`, { params: { session_id } }),
