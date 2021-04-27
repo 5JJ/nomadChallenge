@@ -1,17 +1,36 @@
 import { useState } from "react";
 
-export const getToken = () => {
-  return window.localStorage.getItem("token");
+const getStorageItem = (key) => window.localStorage.getItem(key);
+const removeStorageItem = (key) => window.localStorage.removeItem(key);
+const isExpired = (compDate, baseDate = new Date().getTime()) => {
+  return new Date(compDate) < baseDate;
 };
-export const getSessionId = () => {
-  return window.localStorage.getItem("sessionId");
+const isSessionExpired = () => {
+  const { expiredDate } = getSessionId();
+  return isExpired(expiredDate);
 };
+const getItemAfterCheck = (key) => {
+  const { value, expiredDate } = JSON.parse(getStorageItem(key) || "{}");
+  if (isExpired(expiredDate)) {
+    removeStorageItem(key);
+    return { value: "", expiredDate: "" };
+  }
+  return { value, expiredDate };
+};
+
+export const getToken = () => getItemAfterCheck("token");
+export const getSessionId = () => getStorageItem("sessionId");
+export const getGuestSessionId = () => getItemAfterCheck("gSessionId");
+
 const LoginToken = () => {
   const [token, setToken] = useState(getToken() || "");
   const [sessionId, setSessionId] = useState(getSessionId() || "");
 
-  const saveToken = (value) => {
-    window.localStorage.setItem("token", value);
+  const saveToken = ({ value, expiredDate }) => {
+    window.localStorage.setItem(
+      "token",
+      JSON.stringify({ value, expiredDate })
+    );
     setToken(value);
   };
   const saveSessionId = (value) => {
@@ -21,9 +40,8 @@ const LoginToken = () => {
 
   return {
     setToken: saveToken,
-    token,
     setSessionId: saveSessionId,
-    isLogin: !!sessionId,
+    isLogin: !!sessionId && !isSessionExpired(),
   };
 };
 
