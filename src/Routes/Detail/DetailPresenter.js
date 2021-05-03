@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import { withRouter } from "react-router-dom";
-import Tab from "Components/Tab";
+import Tab from "./Tab";
 import Collection from "Components/Collection";
 import Helmet from "react-helmet";
 import Message from "Components/Message";

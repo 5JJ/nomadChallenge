@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import ProductionTab from "./Tabs/Production";
-import VideosTab from "./Tabs/Videos";
-import SeasonsTab from "./Tabs/Seasons";
 
-const TabContainer = styled.div`
-  margin-top: 23px;
-`;
-const TabList = styled.ul`
+const Tabs = styled.ul`
   display: flex;
 `;
-const TabListItem = styled.li`
+const Tab = styled.li`
   padding: 10px 20px;
   cursor: pointer;
   font-weight: ${(props) => (props.selected ? "bold" : "400")};
@@ -24,65 +18,44 @@ const TabContent = styled.div`
   min-height: 30vh;
 `;
 
-const TabComponent = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const useTab = (initialIndex, tabs) => {
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
 
-  return { activeIndex, setActiveIndex };
+  return {
+    activeIndex,
+    setActiveIndex,
+    activeTab: tabs[activeIndex].props.children,
+  };
 };
-const Tab = (result) => {
-  const { activeIndex, setActiveIndex } = TabComponent();
+const TabContainer = ({ children: tabs }) => {
+  tabs = tabs.filter((tab) => tab && tab.props && tab.props.children);
+  const { activeIndex, setActiveIndex, activeTab } = useTab(0, tabs);
 
   return (
-    <TabContainer>
-      <TabList>
-        <TabListItem
-          onClick={() => setActiveIndex(0)}
-          selected={activeIndex === 0}
-        >
-          Video
-        </TabListItem>
-        <TabListItem
-          onClick={() => setActiveIndex(1)}
-          selected={activeIndex === 1}
-        >
-          Production
-        </TabListItem>
-        {!result.isMovie && (
-          <TabListItem
-            onClick={() => setActiveIndex(2)}
-            selected={activeIndex === 2}
-          >
-            Seasons
-          </TabListItem>
-        )}
-      </TabList>
-      <TabContent>
-        {activeIndex === 0 && (
-          <VideosTab videos={result.videos && result.videos.results} />
-        )}
-        {activeIndex === 1 && (
-          <ProductionTab companies={result.production_companies} />
-        )}
-        {activeIndex === 2 && <SeasonsTab seasons={result.seasons} />}
-      </TabContent>
-    </TabContainer>
+    <>
+      <Tabs>
+        {tabs
+          .filter((tab) => tab)
+          .map(({ props: { title } }, index) => (
+            <Tab
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              selected={activeIndex === index}
+            >
+              {title}
+            </Tab>
+          ))}
+      </Tabs>
+      <TabContent>{activeTab}</TabContent>
+    </>
   );
 };
 
-Tab.propTypes = {
-  result: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    overview: PropTypes.string,
-    parts: PropTypes.arrayOf(
-      PropTypes.shape({
-        original_title: PropTypes.string,
-        overview: PropTypes.string,
-        id: PropTypes.number.isRequired,
-        poster_path: PropTypes.string,
-        release_date: PropTypes.string,
-        vote_average: PropTypes.number,
-      })
-    ).isRequired,
-  }),
+TabContainer.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+    })
+  ),
 };
-export default Tab;
+export default TabContainer;

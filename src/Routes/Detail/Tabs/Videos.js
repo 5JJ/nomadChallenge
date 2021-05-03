@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import NoResult from "../NoResult";
+import NoResult from "../../../Components/NoResult";
 
 const VideoList = styled.div`
   display: flex;

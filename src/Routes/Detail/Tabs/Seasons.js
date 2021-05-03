@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import NoResult from "../NoResult";
+import NoResult from "../../../Components/NoResult";
 
 const SeasonsList = styled.ul``;
 const Season = styled.li`
@@ -57,7 +57,7 @@ const SeasonsTab = ({ seasons }) =>
                 bgUrl={
                   season.poster_path
                     ? `https://image.tmdb.org/t/p/w300${season.poster_path}`
-                    : require("../../assets/no_image.jpg").default
+                    : require("../../../assets/no_image.jpg").default
                 }
               />
             </ImageContainer>

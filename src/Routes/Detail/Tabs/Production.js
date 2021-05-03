@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import NoResult from "../NoResult";
+import NoResult from "../../../Components/NoResult";
 import { companyApi } from "api";
 import Message from "Components/Message";
 
@@ -115,7 +115,7 @@ const ProductionTab = ({ companies }) => {
                 bgImage={
                   company.logo_path
                     ? `https://image.tmdb.org/t/p/w300${company.logo_path}`
-                    : require("../../assets/no_image.jpg").default
+                    : require("../../../assets/no_image.jpg").default
                 }
               ></Logo>
             </LogoBox>
