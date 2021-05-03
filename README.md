@@ -38,6 +38,7 @@ After submit the final version, I will continue to put more functions.
 - [x] Create Filter
 - [x] Login Page
 - [ ] Mark as Favorites and check the lists in the my page
+- [ ] change UI of the main page
 - [ ] Personal Page : Show user Reviews, Movie/Tv Watchlist, User Details
 - [ ] Add Recommandation, Similar Section to Detail Page
 - [ ] Upcoming Movie/ TV Shows
