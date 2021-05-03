@@ -36,8 +36,8 @@ After submit the final version, I will continue to put more functions.
 
 - [x] User Reviews
 - [x] Create Filter
-- [ ] Login Page
-- [ ] Personal Page : Show user Reviews, Favorites, Movie/Tv Watchlist, User Details
-- [ ] Mark as Favorites
+- [x] Login Page
+- [ ] Mark as Favorites and check the lists in the my page
+- [ ] Personal Page : Show user Reviews, Movie/Tv Watchlist, User Details
 - [ ] Add Recommandation, Similar Section to Detail Page
 - [ ] Upcoming Movie/ TV Shows
