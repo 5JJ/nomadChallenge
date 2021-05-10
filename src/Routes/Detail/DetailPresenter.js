@@ -9,6 +9,7 @@ import Helmet from "react-helmet";
 import Message from "Components/Message";
 import ReviewList from "Components/ReviewList";
 import device from "Components/deviceSize";
+import Favorites from "Components/Favorites";
 
 const Container = styled.div`
   position: relative;
@@ -45,6 +46,7 @@ const Data = styled.div`
 
 const Title = styled.h2`
   margin-bottom: 10px;
+  padding-left: 36px;
   font-size: 32px;
 `;
 
@@ -110,7 +112,9 @@ const Content = styled.div`
     }
   }
 `;
-
+const FavoriteMark = styled(Favorites)`
+  float: left;
+`;
 const DetailPresenter = withRouter(
   ({
     location: { pathname },
@@ -154,6 +158,10 @@ const DetailPresenter = withRouter(
             {secondIsFetch && <ReviewList reviews={secondResult} />}
           </section>
           <Data>
+            <FavoriteMark
+              media_type={result.isMovie ? "movie" : "tv"}
+              media_id={result.id}
+            />
             <Title>
               {result.isMovie ? result.original_title : result.original_name}
             </Title>
