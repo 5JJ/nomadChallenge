@@ -85,4 +85,31 @@ export const authApi = {
     api.delete(`authentication/session`, { params: { session_id } }),
 };
 
+export const accountApi = {
+  details: (session_id) =>
+    api.get(`account`, {
+      params: {
+        session_id,
+      },
+    }),
+  markAsFavorites: (
+    session_id,
+    account_id,
+    { media_type, media_id, favorite }
+  ) =>
+    api.post(`account/${account_id}/favorite?session_id=${session_id}`, {
+      media_type,
+      media_id,
+      favorite,
+    }),
+  myFavoriteShows: (session_id, account_id, params) =>
+    api.get(`account/${account_id}/favorite/tv?session_id=${session_id}`, {
+      params,
+    }),
+  myFavoriteMovies: (session_id, account_id, params) =>
+    api.get(`account/${account_id}/favorite/movies?session_id=${session_id}`, {
+      params,
+    }),
+};
+
 export default api;
