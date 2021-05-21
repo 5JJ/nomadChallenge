@@ -7,7 +7,7 @@ const isExpired = (compDate, baseDate = new Date().getTime()) => {
 };
 const isSessionExpired = () => {
   const { expiredDate } = getSessionId();
-  return isExpired(expiredDate);
+  return expiredDate && isExpired(expiredDate);
 };
 const getItemAfterCheck = (key) => {
   const { value, expiredDate } = JSON.parse(getStorageItem(key) || "{}");
@@ -21,6 +21,7 @@ const getItemAfterCheck = (key) => {
 export const getToken = () => getItemAfterCheck("token");
 export const getSessionId = () => getStorageItem("sessionId");
 export const getGuestSessionId = () => getItemAfterCheck("gSessionId");
+export const isLogin = () => !isSessionExpired();
 
 const LoginToken = () => {
   const [token, setToken] = useState(getToken() || "");
